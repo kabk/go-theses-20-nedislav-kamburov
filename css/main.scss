@@ -1,0 +1,200 @@
+@charset "UTF-8";
+/* ••••••••••••••••••••••••••••••••
+© 2019-now Nedislav Kamburov
+All rights reserved
+www.nedkamburov.com
+•••••••••••••••••••••••••••••••• */
+
+// General
+// --------------------------------
+//TODO: Before live, check how the foundry wants the type to be embedded
+// @font-face {
+// }
+// @font-face {
+//   // font-style: normal;
+//   // font-weight: normal;
+//   // font-family: 'Font Italic';
+//   // // url(/site/templates/hb-resources/fonts/HerculesText-Italic.woff2) format('woff2'),
+//   // src: url(../fonts/HerculesText-Italic.woff) format('woff'),
+//   //   url(../fonts/HerculesText-Italic.ttf) format('truetype');
+// }
+
+// Variables
+// --------------------------------
+$background-color: #fff;
+$color: #000;
+$link-color: blue;
+
+$font-size: 2rem;
+$line-height: 1.4;
+
+$gutter-v: $font-size * $line-height * 1.4;
+$gutter-h: $font-size * $line-height;
+$gutter-thin-h: $gutter-h * 0.5;
+
+$duration: 0.8s;
+// $easing: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+$easing: ease-out;
+
+// Mixins
+// --------------------------------
+// @include vendor-prefix-attribute(attribute, value);
+@mixin vendor-prefix-attribute($attribute, $value) {
+  -ms-#{$attribute}: $value;
+  -o-#{$attribute}: $value;
+  -moz-#{$attribute}: $value;
+  -webkit-#{$attribute}: $value;
+  #{$attribute}: $value;
+}
+
+// @include vendor-prefix-value(attribute, value);
+@mixin vendor-prefix-value($attribute, $value) {
+  #{$attribute}: -ms-#{$value};
+  #{$attribute}: -o-#{$value};
+  #{$attribute}: -moz-#{$value};
+  #{$attribute}: -webkit-#{$value};
+  #{$attribute}: $value;
+}
+
+html {
+  width: 100%;
+  // height: 100%;
+
+  //TODO: Responsiveness
+  @media screen and (min-width: 0), (min-height: 0px) {
+    font-size: 10px;
+  }
+}
+
+body {
+  width: 100%;
+
+  font-family: 'Font Regular', Helvetica, Arial, sans-serif;
+  font-size: $font-size;
+  line-height: $line-height;
+  color: $color;
+  background-color: $background-color;
+  overflow-x: hidden;
+}
+
+a {
+  // color: $link-color;
+  text-decoration: none;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+}
+a:hover,
+a:active {
+  text-decoration: underline;
+}
+a:focus {
+  text-decoration: none;
+}
+
+input,
+button,
+select,
+textarea {
+  @include vendor-prefix-attribute(text-size-adjust, none);
+  @include vendor-prefix-attribute(border-radius, 0);
+  @include vendor-prefix-attribute(appearance, none);
+}
+
+nav {
+  h1 {
+    font-size: 2em;
+  }
+}
+
+.wrapper {
+  padding: $gutter-h $gutter-v;
+  margin: auto;
+  left: 0;
+  right: 0;
+
+  height: 4000px;
+
+  @media screen {
+    max-width: 900px;
+  }
+
+  .menu {
+    padding-bottom: $gutter-h;
+
+    .chapters-list {
+      li {
+        display: inline-block;
+        margin-right: 1em; //TODO: set
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+  .container {
+    padding-bottom: $gutter-h;
+
+    .chapter {
+      .chapter-title {
+        margin-top: $gutter-h;
+        margin-bottom: $gutter-thin-h;
+
+        font-size: 2em;
+        font-family: cursive;
+        line-height: $line-height * 0.8; //TODO: set this according to the font
+      }
+
+      .visual-content {
+        display: none;
+      }
+    }
+
+    .title {
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+
+    #return-btn {
+      position: fixed;
+      padding: $gutter-h $gutter-v;
+      right: 0;
+      bottom: 0;
+
+      font-size: $font-size * 2;
+      opacity: 0;
+      transition: opacity 0.2s $easing;
+    }
+
+    // General styling for the container
+
+    img {
+      width: 100%;
+      background-color: $color;
+    }
+
+    iframe {
+      // padding: -$gutter-h -$gutter-v;
+      width: 100%;
+      height: 30vh; //TODO: set properly
+      background-color: $color;
+    }
+    span {
+      color: $link-color;
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+
+    p {
+      text-indent: $gutter-v; //TODO: set
+      &:first-of-type {
+        //TODO: add exception for paragraph after big quotes
+        text-indent: 0;
+      }
+    }
+  }
+}
