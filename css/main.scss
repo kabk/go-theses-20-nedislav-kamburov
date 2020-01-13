@@ -26,6 +26,7 @@ $color: #000;
 $link-color: blue;
 
 $font-size: 2rem;
+$chapter-title-size: $font-size * 4;
 $line-height: 1.4;
 
 $gutter-v: $font-size * $line-height * 1.4;
@@ -143,13 +144,21 @@ nav {
         margin-top: $gutter-h;
         margin-bottom: $gutter-thin-h;
 
-        font-size: 2em;
+        font-size: $chapter-title-size;
         font-family: cursive;
         line-height: $line-height * 0.8; //TODO: set this according to the font
       }
 
+      .videoWrapper {
+        position: relative;
+        width: 100vw;
+        left: 0;
+        padding-bottom: 56.25%; /* 16:9 */
+        height: 0;
+      }
+
       .visual-content {
-        display: none;
+        display: block;
       }
     }
 
@@ -176,11 +185,16 @@ nav {
     }
 
     iframe {
-      // padding: -$gutter-h -$gutter-v;
+      //TODO: set properly
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
-      height: 30vh; //TODO: set properly
+      height: 100%;
       background-color: $color;
+      // z-index: -9999;
     }
+
     span {
       color: $link-color;
       &:hover {

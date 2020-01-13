@@ -1,7 +1,38 @@
 document.addEventListener('DOMContentLoaded', ready);
 function ready() {
-  scrollActivateImages();
+  // scrollActivateImages();
+  playVideosOnPosition();
   returnToTopBtn();
+}
+
+function playVideosOnPosition() {
+  let links = document.querySelectorAll('.link');
+  let trigger = window.innerWidth * 0.4;
+
+  links.forEach(link => {
+    const number = link.dataset.refnum;
+    let visualContent = document.querySelectorAll(
+      `*[data-visual-ref-num='${number}']`
+    );
+    activated = false;
+
+    window.addEventListener('scroll', e => {
+      let topPos = link.getBoundingClientRect().top;
+
+      if (visualContent[0].tagName == 'IFRAME') {
+        if (topPos < trigger && topPos > 0) {
+          if (activated) {
+            return;
+          }
+          //TODO: set it to happen only once
+          visualContent[0].src += '&autoplay=1';
+          // e.preventDefault();
+          console.log('test');
+          activated = true;
+        }
+      }
+    });
+  });
 }
 
 function scrollActivateImages() {
