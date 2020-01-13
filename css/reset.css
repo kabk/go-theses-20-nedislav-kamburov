@@ -1,0 +1,228 @@
+@charset "UTF-8";
+
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+© 2018-now Nedislav G. Kamburov
+All rights reserved
+www.nedkamburov.com
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+
+/* ! Reset, after Eric Meyer, http://meyerweb.com/eric/tools/css/reset/
+================================ */
+
+/* Layout & design
+-------------------------------- */
+/* input, textarea, select, optgroup, option, button,  */
+html,
+body,
+div,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+object,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+table,
+thead,
+tbody,
+tfoot,
+tr,
+th,
+td,
+caption,
+pre,
+blockquote,
+address,
+iframe,
+applet,
+form,
+label,
+fieldset,
+legend,
+span,
+img,
+svg,
+a,
+big,
+small,
+strong,
+em,
+tt,
+sup,
+sub,
+b,
+u,
+i,
+center,
+abbr,
+acronym,
+dfn,
+del,
+ins,
+q,
+cite,
+s,
+strike,
+code,
+var,
+samp,
+kbd,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  /* //NOTE: Style outline for accessibility */
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  vertical-align: baseline;
+  font-family: inherit;
+  font-variant: normal;
+  font-size: 100%;
+  font-style: inherit;
+  font-weight: inherit;
+  font: inherit;
+  background-color: transparent;
+}
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+big,
+small,
+strong,
+em,
+tt,
+sup,
+sub,
+b,
+u,
+i,
+center {
+  /* //NOTE: For browsers that don't support inheritance */
+  font-weight: normal;
+}
+th,
+td,
+caption {
+  /* //NOTE: For browsers that don't support inheritance */
+  font-weight: normal;
+  text-align: left;
+}
+
+/* Layout
+-------------------------------- */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  /* //NOTE: HTML 5 for older browsers */
+  display: block;
+}
+object,
+img,
+video,
+svg,
+iframe,
+textarea {
+  /* //NOTE: Remove extra space that appears underneath when certain elements are nested in div */
+  display: block;
+}
+table {
+  /* //NOTE: Tables still need cellspacing="0" */
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+/* Design
+-------------------------------- */
+html {
+  /* //NOTE: 2018-04-25 Hard reset of font size. */
+  /*   font-size: 62.5%; */
+  font-size: 10px;
+  line-height: 1;
+}
+body {
+  background-color: #fff;
+  color: #000;
+}
+ul,
+ol {
+  list-style-type: none;
+  list-style-position: outside;
+}
+blockquote,
+q,
+cite {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after,
+cite:before,
+cite:after {
+  content: '';
+}
+del,
+ins,
+s,
+strike {
+  /* //NOTE: Needs styling */
+  text-decoration: none;
+}
+abbr,
+abbr[title],
+acronym,
+acronym[title] {
+  border: none;
+  text-decoration: none;
+}
+
+/* User interface
+-------------------------------- */
+:active,
+:focus {
+  /* //NOTE: Style focus for accessibility */
+  outline: 0;
+}
+abbr,
+abbr[title],
+acronym,
+acronym[title] {
+  cursor: inherit;
+}
