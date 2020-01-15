@@ -1,66 +1,42 @@
 document.addEventListener('DOMContentLoaded', ready);
 function ready() {
-  // scrollActivateImages();
   playVideosOnPosition();
   returnToTopBtn();
 }
 
 function playVideosOnPosition() {
-  let links = document.querySelectorAll('.link');
-  let trigger = window.innerWidth * 0.4;
+  let videos = document.querySelectorAll('iframe');
+  let options = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0
+  };
+  let observer = new IntersectionObserver(turnVideosOn, options);
 
-  links.forEach(link => {
-    const number = link.dataset.refnum;
-    let visualContent = document.querySelectorAll(
-      `*[data-visual-ref-num='${number}']`
-    );
-    activated = false;
-
-    window.addEventListener('scroll', e => {
-      let topPos = link.getBoundingClientRect().top;
-
-      if (visualContent[0].tagName == 'IFRAME') {
-        if (topPos < trigger && topPos > 0) {
-          if (activated) {
-            return;
-          }
-          //TODO: set it to happen only once
-          visualContent[0].src += '&autoplay=1';
-          // e.preventDefault();
-          console.log('test');
-          activated = true;
-        }
-      }
-    });
+  videos.forEach(video => {
+    observer.observe(video);
   });
 }
 
-function scrollActivateImages() {
-  let links = document.querySelectorAll('.link');
-  let trigger = window.innerWidth * 0.4;
+let turnVideosOn = (entries, observer) => {
+  entries.forEach(entry => {
+    let video = entry.target;
 
-  links.forEach(link => {
-    const number = link.dataset.refnum;
-    let visualContent = document.querySelectorAll(
-      `*[data-visual-ref-num='${number}']`
-    );
-
-    window.addEventListener('scroll', e => {
-      let topPos = link.getBoundingClientRect().top;
-
-      if (topPos < trigger) {
-        //TODO: set it to happen only once
-        visualContent.forEach(visualItem => {
-          link.parentNode.insertBefore(visualItem, link.nextSibling);
-          visualItem.style.display = 'block';
-          link.style.color = 'red';
-        });
+    if (entry.isIntersecting) {
+      console.log('play');
+      if (video.src.includes('?')) {
+        //TODO: add an alert or notification to enable Flash?! for Chrome to work,
+        // Safari also needs to allow Autoplay.
+        video.src += '&autoplay=1';
       } else {
-        link.style.color = 'blue';
+        video.src += '?&autoplay=1';
       }
-    });
+    } else {
+      console.log('stop');
+      video.src = video.src.replace('&autoplay=1', '');
+    }
   });
-}
+};
 
 function returnToTopBtn() {
   let btn = document.querySelector('#return-btn');
@@ -69,8 +45,7 @@ function returnToTopBtn() {
   window.addEventListener(
     'scroll',
     function() {
-      // if (scrollTop == undefined) scrollTop == 0;
-      let st = window.pageYOffset || document.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
+      let st = window.pageYOffset || document.scrollTop;
       if (st > lastScrollTop) {
         btn.style.opacity = '0';
       } else {
