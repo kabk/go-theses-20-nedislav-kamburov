@@ -203,6 +203,15 @@ nav h1 {
   background-color: #0f0f0f;
 }
 
+.wrapper video {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #0f0f0f;
+}
+
 .wrapper span {
   color: #ffbb00;
 }

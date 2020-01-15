@@ -6,6 +6,7 @@ function ready() {
 
 function playVideosOnPosition() {
   let videos = document.querySelectorAll('iframe');
+  let videosEmbedded = document.querySelectorAll('video');
   let options = {
     root: null,
     rootMargin: '0px',
@@ -13,7 +14,7 @@ function playVideosOnPosition() {
   };
   let observer = new IntersectionObserver(turnVideosOn, options);
 
-  videos.forEach(video => {
+  videosEmbedded.forEach(video => {
     observer.observe(video);
   });
 }
@@ -24,16 +25,18 @@ let turnVideosOn = (entries, observer) => {
 
     if (entry.isIntersecting) {
       console.log('play');
-      if (video.src.includes('?')) {
-        //TODO: add an alert or notification to enable Flash?! for Chrome to work,
-        // Safari also needs to allow Autoplay.
-        video.src += '&autoplay=1';
-      } else {
-        video.src += '?&autoplay=1';
-      }
+      video.play();
+      // if (video.src.includes('?')) {
+      //   //TODO: add an alert or notification to enable Flash?! for Chrome to work,
+      //   // Safari also needs to allow Autoplay.
+      //   video.src += '&autoplay=1';
+      // } else {
+      //   video.src += '?&autoplay=1';
+      // }
     } else {
       console.log('stop');
-      video.src = video.src.replace('&autoplay=1', '');
+      video.pause();
+      // video.src = video.src.replace('&autoplay=1', '');
     }
   });
 };
