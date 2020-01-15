@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /* ••••••••••••••••••••••••••••••••
-© 2019-now Nedislav Kamburov
+© 2018-now Nedislav Kamburov
 All rights reserved
 www.nedkamburov.com
 •••••••••••••••••••••••••••••••• */
@@ -10,23 +10,30 @@ www.nedkamburov.com
 //TODO: Before live, check how the foundry wants the type to be embedded
 // @font-face {
 // }
-// @font-face {
-//   // font-style: normal;
-//   // font-weight: normal;
-//   // font-family: 'Font Italic';
-//   // // url(/site/templates/hb-resources/fonts/HerculesText-Italic.woff2) format('woff2'),
-//   // src: url(../fonts/HerculesText-Italic.woff) format('woff'),
-//   //   url(../fonts/HerculesText-Italic.ttf) format('truetype');
-// }
+@font-face {
+  font-style: normal;
+  font-weight: normal;
+  font-family: 'GT-America';
+  src: url(../fonts/GT-America-Regular.woff) format('woff'),
+    url(../fonts/GT-America-Regular.otf) format('opentype');
+}
+
+@font-face {
+  font-style: normal;
+  font-weight: normal;
+  font-family: 'GT-America-Medium';
+  src: url(../fonts/GT-America-Medium.woff) format('woff'),
+    url(../fonts/GT-America-Medium.otf) format('opentype');
+}
 
 // Variables
 // --------------------------------
 $background-color: #fff;
-$color: #000;
-$link-color: blue;
+$color: #0f0f0f;
+$link-color: #ffbb00;
 
 $font-size: 2rem;
-$chapter-title-size: $font-size * 4;
+$chapter-title-size: $font-size * 6;
 $line-height: 1.4;
 
 $gutter-v: $font-size * $line-height * 1.4;
@@ -61,16 +68,14 @@ html {
   width: 100%;
   // height: 100%;
 
-  //TODO: Responsiveness
-  @media screen and (min-width: 0), (min-height: 0px) {
-    font-size: 10px;
-  }
+  // text-rendering: optimizeLegibility;
+  // -webkit-font-smoothing: antialiased;
 }
 
 body {
   width: 100%;
 
-  font-family: 'Font Regular', Helvetica, Arial, sans-serif;
+  font-family: 'GT-America', Helvetica, Arial, sans-serif;
   font-size: $font-size;
   line-height: $line-height;
   color: $color;
@@ -111,19 +116,67 @@ nav {
 }
 
 .wrapper {
-  padding: $gutter-h $gutter-v;
   margin: auto;
   left: 0;
   right: 0;
-
-  height: 4000px;
-
-  @media screen {
+  // padding: $gutter-h $gutter-v;
+  p,
+  h3,
+  h4,
+  .chapter-body li,
+  nav {
+    margin: auto;
+    padding-left: $gutter-v;
+    padding-right: $gutter-v;
     max-width: 900px;
+  }
+
+  .intro {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    vertical-align: top;
+
+    .title {
+      text-align: center;
+      font-family: 'GT-America-Medium', Helvetica, Arial, sans-serif;
+    }
+    .thesis-title {
+      position: absolute;
+      top: -9vw;
+      left: -0.6%;
+      right: 0;
+
+      font-size: 25vw;
+      letter-spacing: -1vw;
+      -webkit-text-stroke: 2px #000;
+      background-image: url(../images/versace.png);
+      background-size: 100%;
+
+      /* Color fallback */
+      color: #fff;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .thesis-subtitle {
+      font-size: 2vw;
+      position: absolute;
+      top: 19vw;
+    }
+
+    .videoWrapper {
+      width: 100vw;
+      height: auto;
+      // padding-bottom: 20%; /* 16:9 */ //TODO: is it a hack?
+      background-color: $color;
+    }
   }
 
   .menu {
     padding-bottom: $gutter-h;
+    padding-left: $gutter-v;
+    padding-right: $gutter-v;
 
     .chapters-list {
       li {
@@ -137,33 +190,44 @@ nav {
   }
 
   .container {
-    padding-bottom: $gutter-h;
+    overflow-x: hidden;
 
     .chapter {
       .chapter-title {
         margin-top: $gutter-h;
         margin-bottom: $gutter-thin-h;
 
-        font-size: $chapter-title-size;
-        font-family: cursive;
-        line-height: $line-height * 0.8; //TODO: set this according to the font
+        font-size: 12vw;
+        line-height: $line-height * 0.66;
+        @media only screen and (min-width: 900px) {
+          font-size: $chapter-title-size;
+        }
+        text-transform: uppercase;
+      }
+
+      .imageWrapper {
+        padding-left: $gutter-v;
+        padding-right: $gutter-v;
+        margin: auto;
+        max-width: 900px;
+
+        // &.reference {
+        //   width: 38%;
+        //   border: 1px solid rgba(255, 0, 0, 1);
+        //   // display: inline-block;1
+        //   display: inline-block;
+        // }
       }
 
       .videoWrapper {
         position: relative;
         width: 100vw;
-        left: 0;
-        padding-bottom: 56.25%; /* 16:9 */
-        height: 0;
-      }
+        height: auto;
 
-      .visual-content {
-        display: block;
+        padding-bottom: 70%; /* 16:9 */ //TODO: is it a hack?
+        background-color: $color;
+        // opacity: 0.5;
       }
-    }
-
-    .title {
-      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     }
 
     #return-btn {
@@ -176,39 +240,111 @@ nav {
       opacity: 0;
       transition: opacity 0.2s $easing;
     }
+  }
 
-    // General styling for the container
+  // General styling for the container
 
-    img {
-      width: 100%;
-      background-color: $color;
+  img {
+    width: 100%;
+    background-color: $color;
+  }
+
+  iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+
+    background-color: $color;
+  }
+
+  span {
+    color: $link-color;
+    &:hover {
+      text-decoration: underline;
+      cursor: pointer;
     }
+  }
 
-    iframe {
-      //TODO: set properly
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: $color;
-      // z-index: -9999;
+  p {
+    text-indent: $gutter-v; //TODO: set
+    &:first-of-type {
+      //TODO: add exception for paragraph after big quotes
+      text-indent: 0;
     }
+  }
 
-    span {
-      color: $link-color;
-      &:hover {
-        text-decoration: underline;
-        cursor: pointer;
-      }
-    }
+  // ul,
+  // ol,
+  // li,
+  // a,
+  // nav,
+  // span,
+  // p,
+  // h1,
+  // h2,
+  // h3,
+  // h4,
+  // h5,
+  // h6 {
+  //   color: #fff;
+  //   z-index: 1000;
+  //   position: relative;
+  //   // mix-blend-mode: difference;
+  // }
+}
 
-    p {
-      text-indent: $gutter-v; //TODO: set
-      &:first-of-type {
-        //TODO: add exception for paragraph after big quotes
-        text-indent: 0;
-      }
-    }
+// .text-wrap {
+//   margin: 0;
+//   position: relative;
+//   width: 100%;
+
+//   svg {
+//     position: absolute;
+//     width: 100%;
+//     height: auto;
+//     font: bold 100px sans-serif;
+//     text-transform: uppercase;
+
+//     .img-layer {
+//       fill: url(#p-img);
+//     }
+
+//     .gradient-layer {
+//       fill: url(#gr-overlay);
+//     }
+//   }
+// }
+
+//TODO: Responsiveness
+@media only screen and (max-width: 900px) {
+  html {
+    font-size: 10px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  html {
+    font-size: 9px;
+  }
+
+  // .chapter-title {
+  //   font-size: 90px !important;
+  // }
+}
+
+@media only screen and (max-width: 500px) {
+  html {
+    font-size: 8px;
+  }
+  // .chapter-title {
+  //   font-size: 50px !important;
+  // }
+}
+
+@media only screen and (max-width: 400px) {
+  html {
+    font-size: 6px;
   }
 }

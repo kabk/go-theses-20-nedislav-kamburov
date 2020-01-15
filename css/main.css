@@ -1,25 +1,33 @@
 @charset "UTF-8";
 /* ••••••••••••••••••••••••••••••••
-© 2019-now Nedislav Kamburov
+© 2018-now Nedislav Kamburov
 All rights reserved
 www.nedkamburov.com
 •••••••••••••••••••••••••••••••• */
+@font-face {
+  font-style: normal;
+  font-weight: normal;
+  font-family: 'GT-America';
+  src: url(../fonts/GT-America-Regular.woff) format("woff"), url(../fonts/GT-America-Regular.otf) format("opentype");
+}
+
+@font-face {
+  font-style: normal;
+  font-weight: normal;
+  font-family: 'GT-America-Medium';
+  src: url(../fonts/GT-America-Medium.woff) format("woff"), url(../fonts/GT-America-Medium.otf) format("opentype");
+}
+
 html {
   width: 100%;
 }
 
-@media screen and (min-width: 0), (min-height: 0px) {
-  html {
-    font-size: 10px;
-  }
-}
-
 body {
   width: 100%;
-  font-family: 'Font Regular', Helvetica, Arial, sans-serif;
+  font-family: 'GT-America', Helvetica, Arial, sans-serif;
   font-size: 2rem;
   line-height: 1.4;
-  color: #000;
+  color: #0f0f0f;
   background-color: #fff;
   overflow-x: hidden;
 }
@@ -64,21 +72,67 @@ nav h1 {
 }
 
 .wrapper {
-  padding: 2.8rem 3.92rem;
   margin: auto;
   left: 0;
   right: 0;
-  height: 4000px;
 }
 
-@media screen {
-  .wrapper {
-    max-width: 900px;
-  }
+.wrapper p,
+.wrapper h3,
+.wrapper h4,
+.wrapper .chapter-body li,
+.wrapper nav {
+  margin: auto;
+  padding-left: 3.92rem;
+  padding-right: 3.92rem;
+  max-width: 900px;
+}
+
+.wrapper .intro {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  vertical-align: top;
+}
+
+.wrapper .intro .title {
+  text-align: center;
+  font-family: 'GT-America-Medium', Helvetica, Arial, sans-serif;
+}
+
+.wrapper .intro .thesis-title {
+  position: absolute;
+  top: -9vw;
+  left: -0.6%;
+  right: 0;
+  font-size: 25vw;
+  letter-spacing: -1vw;
+  -webkit-text-stroke: 2px #000;
+  background-image: url(../images/versace.png);
+  background-size: 100%;
+  /* Color fallback */
+  color: #fff;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.wrapper .intro .thesis-subtitle {
+  font-size: 2vw;
+  position: absolute;
+  top: 19vw;
+}
+
+.wrapper .intro .videoWrapper {
+  width: 100vw;
+  height: auto;
+  background-color: #0f0f0f;
 }
 
 .wrapper .menu {
   padding-bottom: 2.8rem;
+  padding-left: 3.92rem;
+  padding-right: 3.92rem;
 }
 
 .wrapper .menu .chapters-list li {
@@ -91,32 +145,37 @@ nav h1 {
 }
 
 .wrapper .container {
-  padding-bottom: 2.8rem;
+  overflow-x: hidden;
 }
 
 .wrapper .container .chapter .chapter-title {
   margin-top: 2.8rem;
   margin-bottom: 1.4rem;
-  font-size: 8rem;
-  font-family: cursive;
-  line-height: 1.12;
+  font-size: 12vw;
+  line-height: 0.924;
+  text-transform: uppercase;
+}
+
+@media only screen and (min-width: 900px) {
+  .wrapper .container .chapter .chapter-title {
+    font-size: 12rem;
+  }
+}
+
+.wrapper .container .chapter .imageWrapper {
+  padding-left: 3.92rem;
+  padding-right: 3.92rem;
+  margin: auto;
+  max-width: 900px;
 }
 
 .wrapper .container .chapter .videoWrapper {
   position: relative;
   width: 100vw;
-  left: 0;
-  padding-bottom: 56.25%;
+  height: auto;
+  padding-bottom: 70%;
   /* 16:9 */
-  height: 0;
-}
-
-.wrapper .container .chapter .visual-content {
-  display: block;
-}
-
-.wrapper .container .title {
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  background-color: #0f0f0f;
 }
 
 .wrapper .container #return-btn {
@@ -130,33 +189,57 @@ nav h1 {
   transition: opacity 0.2s ease-out;
 }
 
-.wrapper .container img {
+.wrapper img {
   width: 100%;
-  background-color: #000;
+  background-color: #0f0f0f;
 }
 
-.wrapper .container iframe {
+.wrapper iframe {
   position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
-  background-color: #000;
+  top: 0;
+  left: 0;
+  background-color: #0f0f0f;
 }
 
-.wrapper .container span {
-  color: blue;
+.wrapper span {
+  color: #ffbb00;
 }
 
-.wrapper .container span:hover {
+.wrapper span:hover {
   text-decoration: underline;
   cursor: pointer;
 }
 
-.wrapper .container p {
+.wrapper p {
   text-indent: 3.92rem;
 }
 
-.wrapper .container p:first-of-type {
+.wrapper p:first-of-type {
   text-indent: 0;
+}
+
+@media only screen and (max-width: 900px) {
+  html {
+    font-size: 10px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  html {
+    font-size: 9px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  html {
+    font-size: 8px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  html {
+    font-size: 6px;
+  }
 }
