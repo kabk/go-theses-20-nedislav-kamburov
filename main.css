@@ -1,0 +1,292 @@
+@charset "UTF-8";
+/* ••••••••••••••••••••••••••••••••
+© 2018-now Nedislav Kamburov
+All rights reserved
+www.nedkamburov.com
+•••••••••••••••••••••••••••••••• */
+@font-face {
+  font-style: normal;
+  font-weight: normal;
+  font-family: 'GT-America-Extended-Black';
+  src: url(../fonts/GT-America-Extended-Black.woff) format("woff"), url(../fonts/GT-America-Extended-Black.otf) format("opentype");
+}
+
+@font-face {
+  font-style: normal;
+  font-weight: normal;
+  font-family: 'GT-Super-Regular';
+  src: url(../fonts/GTSuperText-Regular.woff) format("woff"), url(../fonts/GTSuperText-Regular.otf) format("opentype");
+}
+
+@font-face {
+  font-style: normal;
+  font-weight: normal;
+  font-family: 'GT-Super-Italic';
+  src: url(../fonts/GTSuperText-RegularItalic.woff) format("woff"), url(../fonts/GTSuperText-RegularItalic.otf) format("opentype");
+}
+
+html {
+  width: 100%;
+}
+
+body {
+  width: 100%;
+  font-family: 'GT-Super-Regular', Times, 'Times New Roman', serif;
+  font-size: 2.8rem;
+  line-height: 1.5;
+  color: #0f0f0f;
+  background-color: #fff;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+}
+
+a:hover,
+a:active {
+  text-decoration: underline;
+}
+
+.chapter-title a:hover, .chapter-title
+a:active {
+  text-decoration: none;
+}
+
+a:focus {
+  text-decoration: none;
+}
+
+input,
+button,
+select,
+textarea {
+  -ms-text-size-adjust: none;
+  -o-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  border-radius: 0;
+  -ms-appearance: none;
+  -o-appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.wrapper {
+  margin: auto;
+  left: 0;
+  right: 0;
+}
+
+.wrapper p,
+.wrapper h3,
+.wrapper h4,
+.wrapper li,
+.wrapper nav {
+  margin: auto;
+  padding-left: 5.88rem;
+  padding-right: 5.88rem;
+  max-width: 900px;
+}
+
+.wrapper nav h1 {
+  font-size: 2em;
+}
+
+.wrapper .intro {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  vertical-align: top;
+}
+
+.wrapper .intro .title {
+  text-align: center;
+  font-family: 'GT-America-Extended-Black', 'Arial Black', Helvetica, sans-serif;
+}
+
+.wrapper .intro .thesis-title {
+  position: absolute;
+  top: -7.6vw;
+  left: -0.6%;
+  right: 0;
+  font-size: 21vw;
+  letter-spacing: -1vw;
+  -webkit-text-stroke: 3px #000;
+  background-image: url(../images/versace.png);
+  background-size: 100%;
+  /* Color fallback */
+  color: #fff;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.wrapper .intro .thesis-subtitle {
+  position: absolute;
+  top: 16.5vw;
+  left: -1vw;
+  text-align: left;
+  font-size: 2vw;
+  color: #fff;
+  mix-blend-mode: exclusion;
+}
+
+.wrapper .intro .videoWrapper {
+  width: 100vw;
+  height: auto;
+  background-color: #0f0f0f;
+}
+
+.wrapper .menu {
+  padding: 4.2rem 5.88rem;
+}
+
+.wrapper .menu .chapters-list li {
+  margin-right: 1em;
+  padding: 0;
+}
+
+.wrapper .menu .chapters-list li:last-child {
+  margin-right: 0;
+}
+
+.wrapper .menu .chapters-list a:visited,
+.wrapper .menu .chapters-list a:link {
+  color: inherit;
+}
+
+.wrapper .menu .chapters-list a:hover {
+  text-transform: uppercase;
+}
+
+.wrapper .container {
+  overflow-x: hidden;
+}
+
+.wrapper .container .chapter .chapter-title {
+  margin-top: 4.2rem;
+  margin-bottom: 2.1rem;
+  font-family: 'GT-America-Extended-Black';
+  font-size: 11vw;
+  line-height: 0.99;
+  text-transform: uppercase;
+}
+
+@media only screen and (min-width: 900px) {
+  .wrapper .container .chapter .chapter-title {
+    font-size: 11.2rem;
+  }
+}
+
+.wrapper .container .chapter .imageWrapper {
+  padding-left: 5.88rem;
+  padding-right: 5.88rem;
+  margin: auto;
+  max-width: 900px;
+}
+
+.wrapper .container .chapter .videoWrapper {
+  position: relative;
+  width: 100vw;
+  height: auto;
+  padding-bottom: 70%;
+  /* 16:9 */
+  background-color: #0f0f0f;
+}
+
+.wrapper .container .chapter .quote {
+  margin: 4.2rem 0;
+  font-family: 'GT-Super-Italic', italic;
+}
+
+.wrapper .container #return-btn {
+  position: fixed;
+  padding: 4.2rem 5.88rem;
+  right: 0;
+  bottom: 0;
+  font-size: 5.6rem;
+  opacity: 0;
+  -webkit-transition: opacity 0.2s ease-out;
+  transition: opacity 0.2s ease-out;
+}
+
+.wrapper img {
+  width: 100%;
+  background-color: #0f0f0f;
+}
+
+.wrapper figure {
+  padding-bottom: 4.2rem;
+}
+
+.wrapper iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #0f0f0f;
+}
+
+.wrapper video {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #0f0f0f;
+}
+
+.wrapper span {
+  color: #ffbb00;
+}
+
+.wrapper span:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.wrapper p {
+  text-indent: 11.76rem;
+}
+
+.wrapper p:first-of-type {
+  text-indent: 0;
+}
+
+.wrapper .quote + p,
+.wrapper figure + p {
+  text-indent: 0;
+}
+
+@media only screen and (max-width: 900px) {
+  html {
+    font-size: 10px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  html {
+    font-size: 10px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  html {
+    font-size: 9px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  html {
+    font-size: 8px;
+  }
+}
