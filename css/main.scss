@@ -379,12 +379,10 @@ textarea {
     }
   }
 
-  br + p {
-    text-indent: 0;
-  }
-
   .quote + p,
-  figure + p {
+  figure + p,
+  br + p,
+  p + .quote {
     text-indent: 0;
   }
 }

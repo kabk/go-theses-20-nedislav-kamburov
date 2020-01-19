@@ -368,12 +368,10 @@ textarea {
   text-indent: 0;
 }
 
-.wrapper br + p {
-  text-indent: 0;
-}
-
 .wrapper .quote + p,
-.wrapper figure + p {
+.wrapper figure + p,
+.wrapper br + p,
+.wrapper p + .quote {
   text-indent: 0;
 }
 
