@@ -199,18 +199,29 @@ textarea {
     position: relative;
     padding: $gutter-h 0;
 
+    &:hover {
+      cursor: pointer;
+    }
+
     h3 {
       padding-left: 0;
       text-transform: uppercase;
-    }
 
+      @media only screen and (max-width: 900px) {
+        padding-left: $gutter-v;
+      }
+    }
     z-index: 9999;
 
     .chapters-list {
       position: absolute;
       display: none;
-      padding: $gutter-thin-h 0;
+
       width: 100%;
+
+      @media only screen and (max-width: 900px) {
+        padding: $gutter-thin-h 0;
+      }
 
       background-color: $color;
       color: $background-color;
@@ -219,6 +230,7 @@ textarea {
 
       li {
         padding-left: $gutter-thin-v;
+        // border-bottom: 1px solid $background-color;
       }
 
       li:hover {
@@ -245,8 +257,10 @@ textarea {
     overflow-x: hidden;
 
     .chapter {
+      margin-bottom: $gutter-h;
+
       .chapter-title {
-        margin-bottom: $gutter-h;
+        margin-bottom: $gutter-thin-h;
 
         font-family: 'GT-America-Extended-Black';
         font-size: 11vw;
@@ -299,7 +313,8 @@ textarea {
       }
 
       .quote {
-        margin: $gutter-h 0;
+        margin-top: $gutter-h;
+        margin-bottom: $gutter-h;
         // font-style: ;
         font-family: 'GT-Super-Italic', italic;
       }
@@ -362,6 +377,10 @@ textarea {
       //TODO: add exception for paragraph after big quotes
       text-indent: 0;
     }
+  }
+
+  br + p {
+    text-indent: 0;
   }
 
   .quote + p,
