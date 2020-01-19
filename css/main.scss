@@ -277,13 +277,12 @@ textarea {
           background-clip: text;
           letter-spacing: -0.03em;
           -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
+          -webkit-text-fill-color: $color;
           -webkit-text-stroke: 3px #000;
-          background-size: 100%;
         }
         @for $i from 0 through 12 {
           #chapter#{$i} {
-            background-image: url(../images/pattern#{$i}.jpg);
+            // background-image: url(../images/pattern#{$i}.jpg);
           }
         }
       }

@@ -234,61 +234,8 @@ textarea {
   background-clip: text;
   letter-spacing: -0.03em;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: #0f0f0f;
   -webkit-text-stroke: 3px #000;
-  background-size: 100%;
-}
-
-.wrapper .container .chapter .chapter-title #chapter0 {
-  background-image: url(../images/pattern0.jpg);
-}
-
-.wrapper .container .chapter .chapter-title #chapter1 {
-  background-image: url(../images/pattern1.jpg);
-}
-
-.wrapper .container .chapter .chapter-title #chapter2 {
-  background-image: url(../images/pattern2.jpg);
-}
-
-.wrapper .container .chapter .chapter-title #chapter3 {
-  background-image: url(../images/pattern3.jpg);
-}
-
-.wrapper .container .chapter .chapter-title #chapter4 {
-  background-image: url(../images/pattern4.jpg);
-}
-
-.wrapper .container .chapter .chapter-title #chapter5 {
-  background-image: url(../images/pattern5.jpg);
-}
-
-.wrapper .container .chapter .chapter-title #chapter6 {
-  background-image: url(../images/pattern6.jpg);
-}
-
-.wrapper .container .chapter .chapter-title #chapter7 {
-  background-image: url(../images/pattern7.jpg);
-}
-
-.wrapper .container .chapter .chapter-title #chapter8 {
-  background-image: url(../images/pattern8.jpg);
-}
-
-.wrapper .container .chapter .chapter-title #chapter9 {
-  background-image: url(../images/pattern9.jpg);
-}
-
-.wrapper .container .chapter .chapter-title #chapter10 {
-  background-image: url(../images/pattern10.jpg);
-}
-
-.wrapper .container .chapter .chapter-title #chapter11 {
-  background-image: url(../images/pattern11.jpg);
-}
-
-.wrapper .container .chapter .chapter-title #chapter12 {
-  background-image: url(../images/pattern12.jpg);
 }
 
 .wrapper .container .chapter .imageWrapper {
