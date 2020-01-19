@@ -7,15 +7,22 @@ www.nedkamburov.com
 @font-face {
   font-style: normal;
   font-weight: normal;
-  font-family: 'GT-America';
-  src: url(../fonts/GT-America-Regular.woff) format("woff"), url(../fonts/GT-America-Regular.otf) format("opentype");
+  font-family: 'GT-America-Extended-Black';
+  src: url(../fonts/GT-America-Extended-Black.woff) format("woff"), url(../fonts/GT-America-Extended-Black.otf) format("opentype");
 }
 
 @font-face {
   font-style: normal;
   font-weight: normal;
-  font-family: 'GT-America-Medium';
-  src: url(../fonts/GT-America-Medium.woff) format("woff"), url(../fonts/GT-America-Medium.otf) format("opentype");
+  font-family: 'GT-Super-Regular';
+  src: url(../fonts/GTSuperText-Regular.woff) format("woff"), url(../fonts/GTSuperText-Regular.otf) format("opentype");
+}
+
+@font-face {
+  font-style: normal;
+  font-weight: normal;
+  font-family: 'GT-Super-Italic';
+  src: url(../fonts/GTSuperText-RegularItalic.woff) format("woff"), url(../fonts/GTSuperText-RegularItalic.otf) format("opentype");
 }
 
 html {
@@ -24,9 +31,9 @@ html {
 
 body {
   width: 100%;
-  font-family: 'GT-America', Helvetica, Arial, sans-serif;
-  font-size: 2rem;
-  line-height: 1.4;
+  font-family: 'GT-Super-Regular', Times, 'Times New Roman', serif;
+  font-size: 2.8rem;
+  line-height: 1.5;
   color: #0f0f0f;
   background-color: #fff;
   overflow-x: hidden;
@@ -44,6 +51,11 @@ a:visited {
 a:hover,
 a:active {
   text-decoration: underline;
+}
+
+.chapter-title a:hover, .chapter-title
+a:active {
+  text-decoration: none;
 }
 
 a:focus {
@@ -67,10 +79,6 @@ textarea {
   appearance: none;
 }
 
-nav h1 {
-  font-size: 2em;
-}
-
 .wrapper {
   margin: auto;
   left: 0;
@@ -80,12 +88,16 @@ nav h1 {
 .wrapper p,
 .wrapper h3,
 .wrapper h4,
-.wrapper .chapter-body li,
+.wrapper li,
 .wrapper nav {
   margin: auto;
-  padding-left: 3.92rem;
-  padding-right: 3.92rem;
+  padding-left: 5.88rem;
+  padding-right: 5.88rem;
   max-width: 900px;
+}
+
+.wrapper nav h1 {
+  font-size: 2em;
 }
 
 .wrapper .intro {
@@ -97,17 +109,17 @@ nav h1 {
 
 .wrapper .intro .title {
   text-align: center;
-  font-family: 'GT-America-Medium', Helvetica, Arial, sans-serif;
+  font-family: 'GT-America-Extended-Black', 'Arial Black', Helvetica, sans-serif;
 }
 
 .wrapper .intro .thesis-title {
   position: absolute;
-  top: -9vw;
+  top: -7.6vw;
   left: -0.6%;
   right: 0;
-  font-size: 25vw;
+  font-size: 21vw;
   letter-spacing: -1vw;
-  -webkit-text-stroke: 2px #000;
+  -webkit-text-stroke: 3px #000;
   background-image: url(../images/versace.png);
   background-size: 100%;
   /* Color fallback */
@@ -118,9 +130,13 @@ nav h1 {
 }
 
 .wrapper .intro .thesis-subtitle {
-  font-size: 2vw;
   position: absolute;
-  top: 19vw;
+  top: 16.5vw;
+  left: -1vw;
+  text-align: left;
+  font-size: 2vw;
+  color: #fff;
+  mix-blend-mode: exclusion;
 }
 
 .wrapper .intro .videoWrapper {
@@ -130,18 +146,25 @@ nav h1 {
 }
 
 .wrapper .menu {
-  padding-bottom: 2.8rem;
-  padding-left: 3.92rem;
-  padding-right: 3.92rem;
+  padding: 4.2rem 5.88rem;
 }
 
 .wrapper .menu .chapters-list li {
-  display: inline-block;
   margin-right: 1em;
+  padding: 0;
 }
 
 .wrapper .menu .chapters-list li:last-child {
   margin-right: 0;
+}
+
+.wrapper .menu .chapters-list a:visited,
+.wrapper .menu .chapters-list a:link {
+  color: inherit;
+}
+
+.wrapper .menu .chapters-list a:hover {
+  text-transform: uppercase;
 }
 
 .wrapper .container {
@@ -149,22 +172,23 @@ nav h1 {
 }
 
 .wrapper .container .chapter .chapter-title {
-  margin-top: 2.8rem;
-  margin-bottom: 1.4rem;
-  font-size: 12vw;
-  line-height: 0.924;
+  margin-top: 4.2rem;
+  margin-bottom: 2.1rem;
+  font-family: 'GT-America-Extended-Black';
+  font-size: 11vw;
+  line-height: 0.99;
   text-transform: uppercase;
 }
 
 @media only screen and (min-width: 900px) {
   .wrapper .container .chapter .chapter-title {
-    font-size: 12rem;
+    font-size: 11.2rem;
   }
 }
 
 .wrapper .container .chapter .imageWrapper {
-  padding-left: 3.92rem;
-  padding-right: 3.92rem;
+  padding-left: 5.88rem;
+  padding-right: 5.88rem;
   margin: auto;
   max-width: 900px;
 }
@@ -178,12 +202,17 @@ nav h1 {
   background-color: #0f0f0f;
 }
 
+.wrapper .container .chapter .quote {
+  margin: 4.2rem 0;
+  font-family: 'GT-Super-Italic', italic;
+}
+
 .wrapper .container #return-btn {
   position: fixed;
-  padding: 2.8rem 3.92rem;
+  padding: 4.2rem 5.88rem;
   right: 0;
   bottom: 0;
-  font-size: 4rem;
+  font-size: 5.6rem;
   opacity: 0;
   -webkit-transition: opacity 0.2s ease-out;
   transition: opacity 0.2s ease-out;
@@ -192,6 +221,10 @@ nav h1 {
 .wrapper img {
   width: 100%;
   background-color: #0f0f0f;
+}
+
+.wrapper figure {
+  padding-bottom: 4.2rem;
 }
 
 .wrapper iframe {
@@ -222,33 +255,27 @@ nav h1 {
 }
 
 .wrapper p {
-  text-indent: 3.92rem;
+  text-indent: 11.76rem;
 }
 
 .wrapper p:first-of-type {
   text-indent: 0;
 }
 
-@media only screen and (max-width: 900px) {
+.wrapper .quote + p,
+.wrapper figure + p {
+  text-indent: 0;
+}
+
+@media (max-width: 480px) {
+  /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+  html {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 900px) {
   html {
     font-size: 10px;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  html {
-    font-size: 9px;
-  }
-}
-
-@media only screen and (max-width: 500px) {
-  html {
-    font-size: 8px;
-  }
-}
-
-@media only screen and (max-width: 400px) {
-  html {
-    font-size: 6px;
   }
 }

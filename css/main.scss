@@ -10,20 +10,29 @@ www.nedkamburov.com
 //TODO: Before live, check how the foundry wants the type to be embedded
 // @font-face {
 // }
+
 @font-face {
   font-style: normal;
   font-weight: normal;
-  font-family: 'GT-America';
-  src: url(../fonts/GT-America-Regular.woff) format('woff'),
-    url(../fonts/GT-America-Regular.otf) format('opentype');
+  font-family: 'GT-America-Extended-Black';
+  src: url(../fonts/GT-America-Extended-Black.woff) format('woff'),
+    url(../fonts/GT-America-Extended-Black.otf) format('opentype');
 }
 
 @font-face {
   font-style: normal;
   font-weight: normal;
-  font-family: 'GT-America-Medium';
-  src: url(../fonts/GT-America-Medium.woff) format('woff'),
-    url(../fonts/GT-America-Medium.otf) format('opentype');
+  font-family: 'GT-Super-Regular';
+  src: url(../fonts/GTSuperText-Regular.woff) format('woff'),
+    url(../fonts/GTSuperText-Regular.otf) format('opentype');
+}
+
+@font-face {
+  font-style: normal;
+  font-weight: normal;
+  font-family: 'GT-Super-Italic';
+  src: url(../fonts/GTSuperText-RegularItalic.woff) format('woff'),
+    url(../fonts/GTSuperText-RegularItalic.otf) format('opentype');
 }
 
 // Variables
@@ -32,9 +41,9 @@ $background-color: #fff;
 $color: #0f0f0f;
 $link-color: #ffbb00;
 
-$font-size: 2rem;
-$chapter-title-size: $font-size * 6;
-$line-height: 1.4;
+$font-size: 2.8rem;
+$chapter-title-size: $font-size * 4;
+$line-height: 1.5;
 
 $gutter-v: $font-size * $line-height * 1.4;
 $gutter-h: $font-size * $line-height;
@@ -75,7 +84,7 @@ html {
 body {
   width: 100%;
 
-  font-family: 'GT-America', Helvetica, Arial, sans-serif;
+  font-family: 'GT-Super-Regular', Times, 'Times New Roman', serif;
   font-size: $font-size;
   line-height: $line-height;
   color: $color;
@@ -95,6 +104,10 @@ a:visited {
 a:hover,
 a:active {
   text-decoration: underline;
+
+  .chapter-title & {
+    text-decoration: none;
+  }
 }
 a:focus {
   text-decoration: none;
@@ -109,12 +122,6 @@ textarea {
   @include vendor-prefix-attribute(appearance, none);
 }
 
-nav {
-  h1 {
-    font-size: 2em;
-  }
-}
-
 .wrapper {
   margin: auto;
   left: 0;
@@ -123,12 +130,18 @@ nav {
   p,
   h3,
   h4,
-  .chapter-body li,
+  li,
   nav {
     margin: auto;
     padding-left: $gutter-v;
     padding-right: $gutter-v;
     max-width: 900px;
+  }
+
+  nav {
+    h1 {
+      font-size: 2em;
+    }
   }
 
   .intro {
@@ -139,17 +152,18 @@ nav {
 
     .title {
       text-align: center;
-      font-family: 'GT-America-Medium', Helvetica, Arial, sans-serif;
+      font-family: 'GT-America-Extended-Black', 'Arial Black', Helvetica,
+        sans-serif;
     }
     .thesis-title {
       position: absolute;
-      top: -9vw;
+      top: -7.6vw;
       left: -0.6%;
       right: 0;
 
-      font-size: 25vw;
+      font-size: 21vw;
       letter-spacing: -1vw;
-      -webkit-text-stroke: 2px #000;
+      -webkit-text-stroke: 3px #000;
       background-image: url(../images/versace.png);
       background-size: 100%;
 
@@ -159,10 +173,17 @@ nav {
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+
     .thesis-subtitle {
-      font-size: 2vw;
       position: absolute;
-      top: 19vw;
+      top: 16.5vw;
+      left: -1vw;
+      text-align: left;
+
+      // font-family: 'GT-Super-Regular';
+      font-size: 2vw;
+      color: $background-color;
+      mix-blend-mode: exclusion;
     }
 
     .videoWrapper {
@@ -174,17 +195,25 @@ nav {
   }
 
   .menu {
-    padding-bottom: $gutter-h;
-    padding-left: $gutter-v;
-    padding-right: $gutter-v;
+    padding: $gutter-h $gutter-v;
 
     .chapters-list {
       li {
-        display: inline-block;
+        // font-size: $font-size * 2;
+        // display: inline-block;
         margin-right: 1em; //TODO: set
+        padding: 0;
         &:last-child {
           margin-right: 0;
         }
+      }
+
+      a:visited,
+      a:link {
+        color: inherit;
+      }
+      a:hover {
+        text-transform: uppercase;
       }
     }
   }
@@ -197,7 +226,8 @@ nav {
         margin-top: $gutter-h;
         margin-bottom: $gutter-thin-h;
 
-        font-size: 12vw;
+        font-family: 'GT-America-Extended-Black';
+        font-size: 11vw;
         line-height: $line-height * 0.66;
         @media only screen and (min-width: 900px) {
           font-size: $chapter-title-size;
@@ -228,6 +258,12 @@ nav {
         background-color: $color;
         // opacity: 0.5;
       }
+
+      .quote {
+        margin: $gutter-h 0;
+        // font-style: ;
+        font-family: 'GT-Super-Italic', italic;
+      }
     }
 
     #return-btn {
@@ -247,6 +283,10 @@ nav {
   img {
     width: 100%;
     background-color: $color;
+  }
+
+  figure {
+    padding-bottom: $gutter-h;
   }
 
   iframe {
@@ -278,83 +318,29 @@ nav {
   }
 
   p {
-    text-indent: $gutter-v; //TODO: set
+    text-indent: $gutter-v * 2; //TODO: set
     &:first-of-type {
       //TODO: add exception for paragraph after big quotes
       text-indent: 0;
     }
   }
 
-  // ul,
-  // ol,
-  // li,
-  // a,
-  // nav,
-  // span,
-  // p,
-  // h1,
-  // h2,
-  // h3,
-  // h4,
-  // h5,
-  // h6 {
-  //   color: #fff;
-  //   z-index: 1000;
-  //   position: relative;
-  //   // mix-blend-mode: difference;
-  // }
+  .quote + p,
+  figure + p {
+    text-indent: 0;
+  }
 }
-
-// .text-wrap {
-//   margin: 0;
-//   position: relative;
-//   width: 100%;
-
-//   svg {
-//     position: absolute;
-//     width: 100%;
-//     height: auto;
-//     font: bold 100px sans-serif;
-//     text-transform: uppercase;
-
-//     .img-layer {
-//       fill: url(#p-img);
-//     }
-
-//     .gradient-layer {
-//       fill: url(#gr-overlay);
-//     }
-//   }
-// }
 
 //TODO: Responsiveness
-@media only screen and (max-width: 900px) {
+@media (max-width: 480px) {
+  /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+  html {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 900px) {
   html {
     font-size: 10px;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  html {
-    font-size: 9px;
-  }
-
-  // .chapter-title {
-  //   font-size: 90px !important;
-  // }
-}
-
-@media only screen and (max-width: 500px) {
-  html {
-    font-size: 8px;
-  }
-  // .chapter-title {
-  //   font-size: 50px !important;
-  // }
-}
-
-@media only screen and (max-width: 400px) {
-  html {
-    font-size: 6px;
   }
 }
