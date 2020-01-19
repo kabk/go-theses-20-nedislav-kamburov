@@ -120,7 +120,7 @@ textarea {
   font-size: 21vw;
   letter-spacing: -1vw;
   -webkit-text-stroke: 3px #000;
-  background-image: url(../images/versace.png);
+  background-image: url(../images/morphingPatterns-small.gif);
   background-size: 100%;
   /* Color fallback */
   color: #fff;
@@ -267,26 +267,15 @@ textarea {
   text-indent: 0;
 }
 
-@media only screen and (max-width: 900px) {
+@media (max-width: 480px) {
+  /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+  html {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 900px) {
   html {
     font-size: 10px;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  html {
-    font-size: 10px;
-  }
-}
-
-@media only screen and (max-width: 500px) {
-  html {
-    font-size: 9px;
-  }
-}
-
-@media only screen and (max-width: 400px) {
-  html {
-    font-size: 8px;
   }
 }
