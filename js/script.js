@@ -1,11 +1,32 @@
 document.addEventListener('DOMContentLoaded', ready);
 function ready() {
-  playVideosOnPosition();
+  // playVideosInViewport();
+  videoJS();
   returnToTopBtn();
 }
 
-function playVideosOnPosition() {
-  let videos = document.querySelectorAll('iframe');
+function videoJS() {
+  var player = videojs('player');
+
+  player.ready(function() {
+    var promise = player.play();
+
+    if (promise !== undefined) {
+      promise
+        .then(function() {
+          console.log('play');
+          // Autoplay started!
+        })
+        .catch(function(error) {
+          console.log('nope' + error);
+          // Autoplay was prevented.
+        });
+    }
+  });
+}
+
+function playVideosInViewport() {
+  let videosEmbedded = document.querySelectorAll('video');
   let options = {
     root: null,
     rootMargin: '0px',
@@ -13,7 +34,7 @@ function playVideosOnPosition() {
   };
   let observer = new IntersectionObserver(turnVideosOn, options);
 
-  videos.forEach(video => {
+  videosEmbedded.forEach(video => {
     observer.observe(video);
   });
 }
@@ -24,19 +45,26 @@ let turnVideosOn = (entries, observer) => {
 
     if (entry.isIntersecting) {
       console.log('play');
-      if (video.src.includes('?')) {
-        //TODO: add an alert or notification to enable Flash?! for Chrome to work,
-        // Safari also needs to allow Autoplay.
-        video.src += '&autoplay=1';
-      } else {
-        video.src += '?&autoplay=1';
-      }
+      video.play();
     } else {
       console.log('stop');
-      video.src = video.src.replace('&autoplay=1', '');
+      video.pause();
     }
   });
 };
+
+function openMenu() {
+  let menuBtn = document.getElementById('menu');
+  let chapters_list = document.getElementsByClassName('chapters-list')[0];
+
+  menuBtn.addEventListener('click', () => {
+    if (chapters_list.style.display === 'none') {
+      chapters_list.style.display = 'block';
+    } else {
+      chapters_list.style.display = 'none';
+    }
+  });
+}
 
 function returnToTopBtn() {
   let btn = document.querySelector('#return-btn');
