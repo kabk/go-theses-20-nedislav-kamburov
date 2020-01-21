@@ -1,32 +1,12 @@
 document.addEventListener('DOMContentLoaded', ready);
 function ready() {
-  // playVideosInViewport();
-  videoJS();
+  playVideosInViewport();
+  openMenu();
   returnToTopBtn();
 }
 
-function videoJS() {
-  var player = videojs('player');
-
-  player.ready(function() {
-    var promise = player.play();
-
-    if (promise !== undefined) {
-      promise
-        .then(function() {
-          console.log('play');
-          // Autoplay started!
-        })
-        .catch(function(error) {
-          console.log('nope' + error);
-          // Autoplay was prevented.
-        });
-    }
-  });
-}
-
 function playVideosInViewport() {
-  let videosEmbedded = document.querySelectorAll('video');
+  let videos = document.querySelectorAll('iframe');
   let options = {
     root: null,
     rootMargin: '0px',
@@ -34,7 +14,7 @@ function playVideosInViewport() {
   };
   let observer = new IntersectionObserver(turnVideosOn, options);
 
-  videosEmbedded.forEach(video => {
+  videos.forEach(video => {
     observer.observe(video);
   });
 }
@@ -45,10 +25,16 @@ let turnVideosOn = (entries, observer) => {
 
     if (entry.isIntersecting) {
       console.log('play');
-      video.play();
+      if (video.src.includes('?')) {
+        //TODO: add an alert or notification to enable Flash?! for Chrome to work,
+        // Safari also needs to allow Autoplay.
+        video.src += '&autoplay=1&playsinline=1';
+      } else {
+        video.src += '?&autoplay=1&playsinline=1';
+      }
     } else {
       console.log('stop');
-      video.pause();
+      video.src = video.src.replace('&autoplay=1&playsinline=1', '');
     }
   });
 };
