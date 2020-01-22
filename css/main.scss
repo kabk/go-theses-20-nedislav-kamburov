@@ -106,6 +106,7 @@ a {
 a:link,
 a:visited {
   text-decoration: none;
+  color: inherit;
 }
 a:hover,
 a:active {
@@ -137,7 +138,8 @@ textarea {
   h3,
   h4,
   li,
-  nav {
+  nav,
+  .chapter-10 ul li {
     margin: auto;
     padding-left: $gutter-v;
     padding-right: $gutter-v;
@@ -205,6 +207,8 @@ textarea {
     z-index: 9999;
 
     h3 {
+      display: inline-block;
+
       padding-left: 0;
       text-transform: uppercase;
 
@@ -216,6 +220,11 @@ textarea {
         cursor: pointer;
         text-decoration: underline;
       }
+    }
+
+    h4 {
+      text-transform: uppercase;
+      display: inline-block;
     }
 
     .chapters-list {
@@ -364,36 +373,43 @@ textarea {
         font-family: 'GT-Super-Italic', italic;
       }
 
+      .list {
+        // margin-left: $indent;
+        // text-indent: -$indent/2;
+        margin-top: $gutter-thin-h;
+        margin-bottom: $gutter-thin-h;
+      }
+
+      .list-break {
+        margin-top: $gutter-thin-h;
+        margin-bottom: $gutter-thin-h;
+      }
+
       .subtitle {
         font-size: $font-size * 1.5;
         margin-top: $gutter-h;
         margin-bottom: $gutter-thin-h;
       }
-    }
 
-    ul.endnotes {
-      padding-left: $indent / 2;
-      // text-indent: -$indent / 2;
-
-      @media only screen and (min-width: 900px) {
-        padding-left: $indent * 2;
-
-        .note-num {
-          margin-left: -$indent;
-          margin-right: ($indent) * 0.7;
-        }
+      a {
+        color: $link-color;
       }
     }
 
-    .chapter-10 {
-      @media only screen and (min-width: 900px) {
-        .subtitle {
-          padding-left: 0;
-        }
+    .chapter-10,
+    footer {
+      li {
+        padding-left: $gutter-v + $indent;
+        text-indent: -$gutter-v * 0.5;
+      }
+      @media only screen and (max-width: 900px) {
         li {
-          padding-left: $indent;
+          padding-left: $gutter-v + $indent;
           text-indent: -$indent;
         }
+      }
+      .note-num {
+        color: $color;
       }
     }
 
@@ -417,7 +433,7 @@ textarea {
   }
 
   .chapter figure {
-    margin-bottom: $gutter-h * 2;
+    margin-bottom: $gutter-h;
   }
 
   iframe {
@@ -431,8 +447,9 @@ textarea {
   }
 
   sup {
+    margin-left: -0.1ch;
     vertical-align: super;
-    font-size: smaller;
+    font-size: $font-size / 1.2;
     font-variant-numeric: lining-nums;
   }
 
@@ -447,7 +464,6 @@ textarea {
   }
 
   figure + figcaption {
-    font-family: 'GT America', 'Arial';
     margin-top: -$gutter-h;
   }
 
@@ -472,12 +488,22 @@ textarea {
     }
   }
 
+  p + figure {
+    margin-top: $gutter-thin-h;
+  }
+
+  figcaption {
+    margin-bottom: $gutter-h;
+    font-family: 'GT America', 'Arial';
+  }
+
   .quote + p,
   figure + p,
   br + p,
   p + .quote,
   .subtitle + p,
-  figcaption + p {
+  figcaption + p,
+  .list + p {
     text-indent: 0;
   }
 }

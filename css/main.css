@@ -47,6 +47,7 @@ a {
 a:link,
 a:visited {
   text-decoration: none;
+  color: inherit;
 }
 
 a:hover,
@@ -90,7 +91,8 @@ textarea {
 .wrapper h3,
 .wrapper h4,
 .wrapper li,
-.wrapper nav {
+.wrapper nav,
+.wrapper .chapter-10 ul li {
   margin: auto;
   padding-left: 5.25rem;
   padding-right: 5.25rem;
@@ -151,6 +153,7 @@ textarea {
 }
 
 .wrapper .menu h3 {
+  display: inline-block;
   padding-left: 0;
   text-transform: uppercase;
 }
@@ -164,6 +167,11 @@ textarea {
 .wrapper .menu h3:hover {
   cursor: pointer;
   text-decoration: underline;
+}
+
+.wrapper .menu h4 {
+  text-transform: uppercase;
+  display: inline-block;
 }
 
 .wrapper .menu .chapters-list {
@@ -314,34 +322,43 @@ textarea {
   font-family: 'GT-Super-Italic', italic;
 }
 
+.wrapper .container .chapter .list {
+  margin-top: 1.875rem;
+  margin-bottom: 1.875rem;
+}
+
+.wrapper .container .chapter .list-break {
+  margin-top: 1.875rem;
+  margin-bottom: 1.875rem;
+}
+
 .wrapper .container .chapter .subtitle {
   font-size: 3.75rem;
   margin-top: 3.75rem;
   margin-bottom: 1.875rem;
 }
 
-.wrapper .container ul.endnotes {
-  padding-left: 3.15rem;
+.wrapper .container .chapter a {
+  color: #ffbb00;
 }
 
-@media only screen and (min-width: 900px) {
-  .wrapper .container ul.endnotes {
-    padding-left: 12.6rem;
-  }
-  .wrapper .container ul.endnotes .note-num {
-    margin-left: -6.3rem;
-    margin-right: 4.41rem;
-  }
+.wrapper .container .chapter-10 li,
+.wrapper .container footer li {
+  padding-left: 11.55rem;
+  text-indent: -2.625rem;
 }
 
-@media only screen and (min-width: 900px) {
-  .wrapper .container .chapter-10 .subtitle {
-    padding-left: 0;
-  }
-  .wrapper .container .chapter-10 li {
-    padding-left: 6.3rem;
+@media only screen and (max-width: 900px) {
+  .wrapper .container .chapter-10 li,
+  .wrapper .container footer li {
+    padding-left: 11.55rem;
     text-indent: -6.3rem;
   }
+}
+
+.wrapper .container .chapter-10 .note-num,
+.wrapper .container footer .note-num {
+  color: #0f0f0f;
 }
 
 .wrapper .container #return-btn {
@@ -361,7 +378,7 @@ textarea {
 }
 
 .wrapper .chapter figure {
-  margin-bottom: 7.5rem;
+  margin-bottom: 3.75rem;
 }
 
 .wrapper iframe {
@@ -375,8 +392,9 @@ textarea {
 }
 
 .wrapper sup {
+  margin-left: -0.1ch;
   vertical-align: super;
-  font-size: smaller;
+  font-size: 2.08333rem;
   font-variant-numeric: lining-nums;
 }
 
@@ -389,7 +407,6 @@ textarea {
 }
 
 .wrapper figure + figcaption {
-  font-family: 'GT America', 'Arial';
   margin-top: -3.75rem;
 }
 
@@ -414,12 +431,22 @@ textarea {
   text-indent: 0;
 }
 
+.wrapper p + figure {
+  margin-top: 1.875rem;
+}
+
+.wrapper figcaption {
+  margin-bottom: 3.75rem;
+  font-family: 'GT America', 'Arial';
+}
+
 .wrapper .quote + p,
 .wrapper figure + p,
 .wrapper br + p,
 .wrapper p + .quote,
 .wrapper .subtitle + p,
-.wrapper figcaption + p {
+.wrapper figcaption + p,
+.wrapper .list + p {
   text-indent: 0;
 }
 
