@@ -13,7 +13,7 @@ www.nedkamburov.com
 
 @font-face {
   font-style: normal;
-  font-weight: normal;
+  font-weight: bold;
   font-family: 'GT-America-Extended-Black';
   src: url(../fonts/GT-America-Extended-Black.woff) format('woff'),
     url(../fonts/GT-America-Extended-Black.otf) format('opentype');
@@ -28,7 +28,7 @@ www.nedkamburov.com
 }
 
 @font-face {
-  font-style: normal;
+  font-style: italic;
   font-weight: normal;
   font-family: 'GT-Super-Italic';
   src: url(../fonts/GTSuperText-RegularItalic.woff) format('woff'),
@@ -40,12 +40,6 @@ www.nedkamburov.com
 $background-color: #fff;
 $color: #0f0f0f;
 $link-color: #ffbb00;
-$purple: #c000d1;
-$blue: #1511e2;
-$red: #f1081b;
-$gold: #faba0a;
-$green: #14ed0c;
-$cyan: #14ebe0;
 
 $font-size: 2.5rem;
 $chapter-title-size: $font-size * 4;
@@ -56,7 +50,7 @@ $gutter-h: $font-size * $line-height;
 $gutter-thin-h: $gutter-h * 0.5;
 $gutter-thin-v: $gutter-v * 0.4;
 
-$indent: $gutter-v * 1.2;
+$indent: $gutter-v;
 $duration: 0.8s;
 // $easing: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 $easing: ease-out;
@@ -84,15 +78,25 @@ $easing: ease-out;
 html {
   width: 100%;
   scroll-behavior: smooth;
-  // height: 100%;
+
+  // Responsiveness
+  @media (max-width: 480px) {
+    /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+    font-size: 10px;
+  }
+
+  @media (max-width: 900px) {
+    font-size: 10px;
+  }
 }
 
 body {
   width: 100%;
 
-  font-family: 'GT-Super-Regular', Times, 'Times New Roman', serif;
+  font-family: 'GT-Super-Regular', 'Times', serif;
   font-size: $font-size;
   line-height: $line-height;
+
   color: $color;
   background-color: $background-color;
   overflow-x: hidden;
@@ -133,7 +137,7 @@ textarea {
   margin: auto;
   left: 0;
   right: 0;
-  // padding: $gutter-h $gutter-v;
+
   p,
   h3,
   h4,
@@ -160,8 +164,7 @@ textarea {
 
     .title {
       text-align: center;
-      font-family: 'GT-America-Extended-Black', 'Arial Black', Helvetica,
-        sans-serif;
+      font-family: 'GT-America-Extended-Black', 'Arial Black', sans-serif;
     }
     .thesis-title {
       position: absolute;
@@ -186,7 +189,6 @@ textarea {
       left: -1vw;
       text-align: left;
 
-      // font-family: 'GT-Super-Regular';
       font-size: 2vw;
       color: $background-color;
       mix-blend-mode: exclusion;
@@ -272,7 +274,7 @@ textarea {
         margin-bottom: $gutter-thin-h;
         padding-left: $gutter-v;
 
-        font-family: 'GT-America-Extended-Black';
+        font-family: 'GT-America-Extended-Black', 'Arial Black', sans-serif;
         font-size: 10vw;
         line-height: $line-height * 0.66;
         text-transform: uppercase;
@@ -293,57 +295,46 @@ textarea {
       }
 
       &.chapter-0 .title {
-        color: $blue;
         background-image: url(../images/patterns/pattern0.jpg);
       }
 
       &.chapter-1 .title {
-        color: $purple;
         background-image: url(../images/patterns/pattern1.jpg);
       }
 
       &.chapter-2 .title {
-        color: $red;
         background-image: url(../images/patterns/pattern2.jpg);
       }
 
       &.chapter-3 .title {
-        color: $gold;
         background-image: url(../images/patterns/pattern3.jpg);
       }
 
       &.chapter-4 .title {
-        color: $blue;
         background-image: url(../images/patterns/pattern4.jpg);
       }
 
       &.chapter-5 .title {
-        color: $gold;
         background-image: url(../images/patterns/pattern5.jpg);
       }
 
       &.chapter-6 .title {
-        color: $blue;
         background-image: url(../images/patterns/pattern6.jpg);
       }
 
       &.chapter-7 .title {
-        color: $gold;
         background-image: url(../images/patterns/pattern7.jpg);
       }
 
       &.chapter-8 .title {
-        color: $red;
         background-image: url(../images/patterns/pattern8.jpg);
       }
 
       &.chapter-9 .title {
-        color: $red;
         background-image: url(../images/patterns/pattern8.jpg);
       }
 
       &.chapter-10 .title {
-        color: $red;
         background-image: url(../images/patterns/pattern9.jpg);
       }
 
@@ -352,7 +343,8 @@ textarea {
         padding-left: $gutter-v;
         padding-right: $gutter-v;
         margin-bottom: $gutter-h;
-        margin: auto;
+        margin-left: auto;
+        margin-right: auto;
         max-width: 900px;
       }
 
@@ -370,14 +362,25 @@ textarea {
         margin-top: $gutter-h;
         margin-bottom: $gutter-h;
 
-        font-family: 'GT-Super-Italic', italic;
+        font-family: 'GT-Super-Italic';
       }
 
       .list {
-        // margin-left: $indent;
-        // text-indent: -$indent/2;
         margin-top: $gutter-thin-h;
         margin-bottom: $gutter-thin-h;
+
+        padding-left: $indent * 2;
+
+        @media only screen and (max-width: 1100px) {
+          padding-left: $indent;
+          text-indent: 0;
+        }
+
+        .note-num {
+          position: absolute;
+          text-indent: -$gutter-v;
+          color: $color;
+        }
       }
 
       .list-break {
@@ -391,6 +394,10 @@ textarea {
         margin-bottom: $gutter-thin-h;
       }
 
+      figure {
+        margin-bottom: $gutter-h;
+      }
+
       a {
         color: $link-color;
       }
@@ -399,18 +406,64 @@ textarea {
     .chapter-10,
     footer {
       li {
-        padding-left: $gutter-v + $indent;
-        text-indent: -$gutter-v * 0.5;
+        padding-left: $gutter-v * 2 + $indent;
+        // calc((100vw - 900px) / 2);
+        text-indent: -$gutter-v;
       }
-      @media only screen and (max-width: 900px) {
+
+      .endnotes li {
+        text-indent: 0;
+
+        .note-num {
+          position: absolute;
+          text-indent: -$gutter-v;
+          color: $link-color;
+        }
+      }
+
+      .image-sources li {
+        padding-left: $gutter-v * 3 + $indent;
+        text-indent: 0;
+
+        .note-num {
+          position: absolute;
+          text-indent: -$gutter-v * 1.5;
+          color: $color;
+        }
+      }
+
+      @media only screen and (max-width: 1100px) {
         li {
           padding-left: $gutter-v + $indent;
           text-indent: -$indent;
         }
+
+        .endnotes li {
+          text-indent: 0;
+
+          .note-num {
+            color: $link-color;
+          }
+        }
+
+        .image-sources li {
+          padding-left: $gutter-v + $indent * 1.5;
+          text-indent: 0;
+
+          .note-num {
+            color: $color;
+          }
+        }
       }
-      .note-num {
-        color: $color;
-      }
+
+      // .note-num {
+      //   position: absolute;
+      //   left: $gutter-v;
+      // }
+    }
+
+    footer {
+      margin-bottom: $gutter-h;
     }
 
     #return-btn {
@@ -432,10 +485,6 @@ textarea {
     background-color: $color;
   }
 
-  .chapter figure {
-    margin-bottom: $gutter-h;
-  }
-
   iframe {
     position: absolute;
     display: block;
@@ -449,11 +498,13 @@ textarea {
   sup {
     margin-left: -0.1ch;
     vertical-align: super;
-    font-size: $font-size / 1.2;
+    font-size: $font-size / 1.4;
     font-variant-numeric: lining-nums;
   }
 
-  // Line Height and type sizes
+  // =-=-=-=-=-=-=-=-=-=-=
+  // Padding & Indentation
+  // =-=-=-=-=-=-=-=-=-=-=
 
   .videoWrapper + figcaption {
     margin-left: auto;
@@ -481,9 +532,8 @@ textarea {
   }
 
   p {
-    text-indent: $indent; //TODO: set
+    text-indent: $indent;
     &:first-of-type {
-      //TODO: add exception for paragraph after big quotes
       text-indent: 0;
     }
   }
@@ -494,7 +544,7 @@ textarea {
 
   figcaption {
     margin-bottom: $gutter-h;
-    font-family: 'GT America', 'Arial';
+    font-family: 'GT America', Arial, Helvetica, sans-serif;
   }
 
   .quote + p,
@@ -505,19 +555,5 @@ textarea {
   figcaption + p,
   .list + p {
     text-indent: 0;
-  }
-}
-
-//TODO: Responsiveness
-@media (max-width: 480px) {
-  /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
-  html {
-    font-size: 10px;
-  }
-}
-
-@media (max-width: 900px) {
-  html {
-    font-size: 10px;
   }
 }

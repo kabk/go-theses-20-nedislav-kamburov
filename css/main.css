@@ -6,7 +6,7 @@ www.nedkamburov.com
 •••••••••••••••••••••••••••••••• */
 @font-face {
   font-style: normal;
-  font-weight: normal;
+  font-weight: bold;
   font-family: 'GT-America-Extended-Black';
   src: url(../fonts/GT-America-Extended-Black.woff) format("woff"), url(../fonts/GT-America-Extended-Black.otf) format("opentype");
 }
@@ -19,7 +19,7 @@ www.nedkamburov.com
 }
 
 @font-face {
-  font-style: normal;
+  font-style: italic;
   font-weight: normal;
   font-family: 'GT-Super-Italic';
   src: url(../fonts/GTSuperText-RegularItalic.woff) format("woff"), url(../fonts/GTSuperText-RegularItalic.otf) format("opentype");
@@ -30,9 +30,22 @@ html {
   scroll-behavior: smooth;
 }
 
+@media (max-width: 480px) {
+  html {
+    /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 900px) {
+  html {
+    font-size: 10px;
+  }
+}
+
 body {
   width: 100%;
-  font-family: 'GT-Super-Regular', Times, 'Times New Roman', serif;
+  font-family: 'GT-Super-Regular', 'Times', serif;
   font-size: 2.5rem;
   line-height: 1.5;
   color: #0f0f0f;
@@ -112,7 +125,7 @@ textarea {
 
 .wrapper .intro .title {
   text-align: center;
-  font-family: 'GT-America-Extended-Black', 'Arial Black', Helvetica, sans-serif;
+  font-family: 'GT-America-Extended-Black', 'Arial Black', sans-serif;
 }
 
 .wrapper .intro .thesis-title {
@@ -221,7 +234,7 @@ textarea {
 .wrapper .container .chapter .chapter-title {
   margin-bottom: 1.875rem;
   padding-left: 5.25rem;
-  font-family: 'GT-America-Extended-Black';
+  font-family: 'GT-America-Extended-Black', 'Arial Black', sans-serif;
   font-size: 10vw;
   line-height: 0.99;
   text-transform: uppercase;
@@ -243,57 +256,46 @@ textarea {
 }
 
 .wrapper .container .chapter.chapter-0 .title {
-  color: #1511e2;
   background-image: url(../images/patterns/pattern0.jpg);
 }
 
 .wrapper .container .chapter.chapter-1 .title {
-  color: #c000d1;
   background-image: url(../images/patterns/pattern1.jpg);
 }
 
 .wrapper .container .chapter.chapter-2 .title {
-  color: #f1081b;
   background-image: url(../images/patterns/pattern2.jpg);
 }
 
 .wrapper .container .chapter.chapter-3 .title {
-  color: #faba0a;
   background-image: url(../images/patterns/pattern3.jpg);
 }
 
 .wrapper .container .chapter.chapter-4 .title {
-  color: #1511e2;
   background-image: url(../images/patterns/pattern4.jpg);
 }
 
 .wrapper .container .chapter.chapter-5 .title {
-  color: #faba0a;
   background-image: url(../images/patterns/pattern5.jpg);
 }
 
 .wrapper .container .chapter.chapter-6 .title {
-  color: #1511e2;
   background-image: url(../images/patterns/pattern6.jpg);
 }
 
 .wrapper .container .chapter.chapter-7 .title {
-  color: #faba0a;
   background-image: url(../images/patterns/pattern7.jpg);
 }
 
 .wrapper .container .chapter.chapter-8 .title {
-  color: #f1081b;
   background-image: url(../images/patterns/pattern8.jpg);
 }
 
 .wrapper .container .chapter.chapter-9 .title {
-  color: #f1081b;
   background-image: url(../images/patterns/pattern8.jpg);
 }
 
 .wrapper .container .chapter.chapter-10 .title {
-  color: #f1081b;
   background-image: url(../images/patterns/pattern9.jpg);
 }
 
@@ -302,7 +304,8 @@ textarea {
   padding-left: 5.25rem;
   padding-right: 5.25rem;
   margin-bottom: 3.75rem;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
   max-width: 900px;
 }
 
@@ -319,12 +322,26 @@ textarea {
 .wrapper .container .chapter .quote {
   margin-top: 3.75rem;
   margin-bottom: 3.75rem;
-  font-family: 'GT-Super-Italic', italic;
+  font-family: 'GT-Super-Italic';
 }
 
 .wrapper .container .chapter .list {
   margin-top: 1.875rem;
   margin-bottom: 1.875rem;
+  padding-left: 10.5rem;
+}
+
+@media only screen and (max-width: 1100px) {
+  .wrapper .container .chapter .list {
+    padding-left: 5.25rem;
+    text-indent: 0;
+  }
+}
+
+.wrapper .container .chapter .list .note-num {
+  position: absolute;
+  text-indent: -5.25rem;
+  color: #0f0f0f;
 }
 
 .wrapper .container .chapter .list-break {
@@ -338,27 +355,72 @@ textarea {
   margin-bottom: 1.875rem;
 }
 
+.wrapper .container .chapter figure {
+  margin-bottom: 3.75rem;
+}
+
 .wrapper .container .chapter a {
   color: #ffbb00;
 }
 
 .wrapper .container .chapter-10 li,
 .wrapper .container footer li {
-  padding-left: 11.55rem;
-  text-indent: -2.625rem;
+  padding-left: 15.75rem;
+  text-indent: -5.25rem;
 }
 
-@media only screen and (max-width: 900px) {
+.wrapper .container .chapter-10 .endnotes li,
+.wrapper .container footer .endnotes li {
+  text-indent: 0;
+}
+
+.wrapper .container .chapter-10 .endnotes li .note-num,
+.wrapper .container footer .endnotes li .note-num {
+  position: absolute;
+  text-indent: -5.25rem;
+  color: #ffbb00;
+}
+
+.wrapper .container .chapter-10 .image-sources li,
+.wrapper .container footer .image-sources li {
+  padding-left: 21rem;
+  text-indent: 0;
+}
+
+.wrapper .container .chapter-10 .image-sources li .note-num,
+.wrapper .container footer .image-sources li .note-num {
+  position: absolute;
+  text-indent: -7.875rem;
+  color: #0f0f0f;
+}
+
+@media only screen and (max-width: 1100px) {
   .wrapper .container .chapter-10 li,
   .wrapper .container footer li {
-    padding-left: 11.55rem;
-    text-indent: -6.3rem;
+    padding-left: 10.5rem;
+    text-indent: -5.25rem;
+  }
+  .wrapper .container .chapter-10 .endnotes li,
+  .wrapper .container footer .endnotes li {
+    text-indent: 0;
+  }
+  .wrapper .container .chapter-10 .endnotes li .note-num,
+  .wrapper .container footer .endnotes li .note-num {
+    color: #ffbb00;
+  }
+  .wrapper .container .chapter-10 .image-sources li,
+  .wrapper .container footer .image-sources li {
+    padding-left: 13.125rem;
+    text-indent: 0;
+  }
+  .wrapper .container .chapter-10 .image-sources li .note-num,
+  .wrapper .container footer .image-sources li .note-num {
+    color: #0f0f0f;
   }
 }
 
-.wrapper .container .chapter-10 .note-num,
-.wrapper .container footer .note-num {
-  color: #0f0f0f;
+.wrapper .container footer {
+  margin-bottom: 3.75rem;
 }
 
 .wrapper .container #return-btn {
@@ -377,10 +439,6 @@ textarea {
   background-color: #0f0f0f;
 }
 
-.wrapper .chapter figure {
-  margin-bottom: 3.75rem;
-}
-
 .wrapper iframe {
   position: absolute;
   display: block;
@@ -394,7 +452,7 @@ textarea {
 .wrapper sup {
   margin-left: -0.1ch;
   vertical-align: super;
-  font-size: 2.08333rem;
+  font-size: 1.78571rem;
   font-variant-numeric: lining-nums;
 }
 
@@ -424,7 +482,7 @@ textarea {
 }
 
 .wrapper p {
-  text-indent: 6.3rem;
+  text-indent: 5.25rem;
 }
 
 .wrapper p:first-of-type {
@@ -437,7 +495,7 @@ textarea {
 
 .wrapper figcaption {
   margin-bottom: 3.75rem;
-  font-family: 'GT America', 'Arial';
+  font-family: 'GT America', Arial, Helvetica, sans-serif;
 }
 
 .wrapper .quote + p,
@@ -448,17 +506,4 @@ textarea {
 .wrapper figcaption + p,
 .wrapper .list + p {
   text-indent: 0;
-}
-
-@media (max-width: 480px) {
-  /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
-  html {
-    font-size: 10px;
-  }
-}
-
-@media (max-width: 900px) {
-  html {
-    font-size: 10px;
-  }
 }
