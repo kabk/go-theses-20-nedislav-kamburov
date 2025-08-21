@@ -1,0 +1,66 @@
+name: Check Broken YouTube Links
+
+on:
+  schedule:
+    - cron: "0 6 * * *"   # daily at 6 AM UTC
+  workflow_dispatch:
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write   # required for creating/closing issues
+
+    steps:
+      # 1️⃣ Checkout the repository so gh CLI can work
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2️⃣ Run the broken links crawler
+      - name: Run Broken Links Crawler
+        id: crawler
+        run: |
+          npx @scholli/broken-links-crawler \
+            --website_url "https://kabk.github.io/go-theses-20-nedislav-kamburov/" \
+            --include_url_contained "youtube.com,youtu.be" \
+            --verbose true \
+            --max_depth 1 \
+            > report.txt 2>&1 || true
+
+      # 3️⃣ Detect if broken links exist
+      - name: Check for broken links
+        id: check
+        run: |
+          if grep -q "Found some broken links!" report.txt; then
+            echo "broken=true" >> $GITHUB_OUTPUT
+          else
+            echo "broken=false" >> $GITHUB_OUTPUT
+          fi
+
+      # 4️⃣ Upload report artifact (optional)
+      - name: Upload report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: broken-links-report
+          path: report.txt
+
+      # 5️⃣ Create an issue if broken links are found
+      - name: Create Issue if broken links found
+        if: steps.check.outputs.broken == 'true'
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: "🚨 Broken YouTube links detected"
+          content-filepath: report.txt
+          labels: "broken-link, automated"
+
+      # 6️⃣ Close all existing broken-link issues if resolved
+      - name: Close broken-link issues if resolved
+        if: steps.check.outputs.broken == 'false'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          issues=$(gh issue list --label "broken-link" --state open --json number -q '.[].number')
+          for issue in $issues; do
+            gh issue comment "$issue" --body "✅ All YouTube links are valid again. Closing this issue automatically."
+            gh issue close "$issue"
+          done
