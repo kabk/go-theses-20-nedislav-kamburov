@@ -14,7 +14,7 @@ jobs:
     steps:
       # 1️⃣ Checkout the repository so gh CLI can work
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       # 2️⃣ Run the broken links crawler
       - name: Run Broken Links Crawler
@@ -39,7 +39,7 @@ jobs:
 
       # 4️⃣ Upload report artifact (optional)
       - name: Upload report artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: broken-links-report
           path: report.txt
